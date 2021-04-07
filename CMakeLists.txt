@@ -82,7 +82,7 @@ MACRO(UseCompilationWarningAsError)
         # warnings when compiled in release configuration.
         SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /WX ")
     ELSEIF(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-        SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+        SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wno-implicit-int-float-conversion")
         IF(JSONCPP_WITH_STRICT_ISO)
             SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic-errors")
         ENDIF()
@@ -106,7 +106,7 @@ SET(CMAKE_CXX_EXTENSIONS OFF)
 
 IF(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     # using regular Clang or AppleClang
-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wconversion -Wshadow -Werror=conversion -Werror=sign-compare")
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wconversion -Wshadow -Werror=conversion -Werror=sign-compare -Wno-implicit-int-float-conversion")
 ELSEIF(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     # using GCC
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wconversion -Wshadow -Wextra")
